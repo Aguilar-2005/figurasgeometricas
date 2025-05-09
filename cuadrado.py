@@ -1,16 +1,16 @@
-class FiguraGeometrica:
-    def __init__(self, alto, ancho):
-        self.alto = alto
-        self.ancho = ancho
+from color import Color
+from figura_geometrica import FiguraGeometrica
+
+class Cuadrado(FiguraGeometrica, Color):
+    def __init__(self, lado=0, color=None):
+        FiguraGeometrica.__init__(self, ancho=lado, alto=lado)  # ambos lados iguales en un cuadrado
+        Color.__init__(self,nombre= color)
+
     def __str__(self):
-        return f'alto: {self.alto}, ancho: {self.ancho}'
-class Cuadrado(FiguraGeometrica):
-    def __init__(self, lado):
-        super().__init__(lado, lado)
-    def area(self):
-        return self.alto * self.ancho
-    def __str__(self):
-        return f"Cuadrado de lado {self.alto}, área: {self.area()}"
-# Crear un cuadrado de lado 6
-cuadrado = Cuadrado(6)
-print(cuadrado)  # Cuadrado de lado 5, área: 25
+        return f"Cuadrado -> {self.__dict__.__str__()}"
+
+if __name__ == "__main__":
+    c1 = Cuadrado(lado=6, color= "Rojo")
+    print(c1)
+    print(f'Area: {c1.area()}')
+    print(f'Perimetro: {c1.perimetro()}')

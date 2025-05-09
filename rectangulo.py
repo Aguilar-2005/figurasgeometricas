@@ -1,16 +1,16 @@
-class FiguraGeometrica:
-    def __init__(self, alto, ancho):
-        self.alto = alto
-        self.ancho = ancho
+from figura_geometrica import FiguraGeometrica
+from color import Color
+
+class Rectangulo(FiguraGeometrica, Color):
+    def __init__(self, alto=0, ancho=0, color=None):
+        FiguraGeometrica.__init__(self, alto, ancho)
+        Color.__init__(self,color)
+
     def __str__(self):
-        return f'alto: {self.alto}, ancho: {self.ancho}'
-class Rectangulo(FiguraGeometrica):
-    def __init__(self, alto, ancho):
-        super().__init__(alto, ancho)
-    def area(self):
-        return self.alto * self.ancho
-    def __str__(self):
-        return f"Rectangulo de alto {self.alto}, ancho {self.ancho}, área: {self.area()}"
-# Crear un rectángulo de alto 4 y ancho 6
-rectangulo = Rectangulo(3,5)
-print(rectangulo)  # Rectangulo de alto 4, ancho: 6, área: 24
+        return f"Rectángulo -> {self.__dict__.__str__()}"
+
+if __name__ == "__main__":
+    r1 = Rectangulo(alto=5,ancho=3, color="Rojo")
+    print(r1)
+    print(f'Area: {r1.area()}')
+    print(f'Perimetro: {r1.perimetro()}')
